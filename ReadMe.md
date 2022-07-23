@@ -5,6 +5,7 @@ Last official update: July 20, 2022
 </pre>
 
 ## INSTRUCTIONS
+Disclaimer: I am pretty sure this only works on Windows OS
 
 <pre>
 Use Visual Studio 2022
