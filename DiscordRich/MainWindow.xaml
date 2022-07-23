@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiscordRich"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="DiscordRich" Height="433" Width="444" Closing="MainWindow_Closing" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
     <Grid HorizontalAlignment="Center" Width="444" Height="417" VerticalAlignment="Top">
-        <Button Content="&lt;button onclick=&quot;GoToMyPage()&quot;&gt;crazyne55&lt;/button&gt;" HorizontalAlignment="Center" Margin="0,366,0,0" Width="304" BorderBrush="White" Background="White" Foreground="#FF0027FF" Click="OpenURL" RenderTransformOrigin="0,1" VerticalAlignment="Top"/>
-        <TextBox x:Name="INPUT_Details" Height="30" Margin="0,35,97,0" TextWrapping="Wrap" Text="DiscordRich, The Rich Presense" VerticalAlignment="Top" HorizontalAlignment="Right" Width="250"/>
-        <TextBox x:Name="INPUT_State" Height="30" Margin="97,70,0,0" TextWrapping="Wrap" Text="App Made By crazyne55!" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250"/>
-        <TextBox x:Name="INPUT_LargeImage" Height="30" Margin="0,105,227,0" TextWrapping="Wrap" Text="dr_logo" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="INPUT_LargeText" Height="30" Margin="227,105,0,0" TextWrapping="Wrap" Text="DiscordRich Logo" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
-        <TextBox x:Name="INPUT_SmallImage" Height="30" Margin="0,140,227,0" TextWrapping="Wrap" Text="dr_logo" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="INPUT_SmallText" Height="30" Margin="227,140,0,0" TextWrapping="Wrap" Text="smol logo :)" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
-        <TextBox x:Name="INPUT_PartyID" Height="30" Margin="97,175,0,0" TextWrapping="Wrap" Text="LobbyID" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" IsEnabled="False"/>
-        <TextBox x:Name="INPUT_PartyCurrent" Height="30" Margin="0,210,227,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
-        <TextBox x:Name="INPUT_PartyMax" Height="30" Margin="227,210,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
-        <Button x:Name="SUBMIT_DATA" Content="Update" Height="25" Margin="122,251,122,0" VerticalAlignment="Top" Width="200" Click="SUBMIT_DATA_Click"/>
+        <Button ToolTip="My [W.I.P.] website" Content="&lt;button onclick=&quot;GoToMyPage()&quot;&gt;crazyne55&lt;/button&gt;" HorizontalAlignment="Center" Margin="0,366,0,0" Width="304" BorderBrush="White" Background="White" Foreground="#FF0027FF" Click="OpenURL" RenderTransformOrigin="0,1" VerticalAlignment="Top"/>
+        <TextBox ToolTip="The 'details' of the app (displays above the state)" x:Name="INPUT_Details" Height="30" Margin="0,113,0,0" TextWrapping="Wrap" Text="DiscordRich, The Rich Presense" VerticalAlignment="Top" HorizontalAlignment="Center" Width="250" IsEnabled="False"/>
+        <TextBox ToolTip="The 'state' of the app (displays under the details)" x:Name="INPUT_State" Height="30" Margin="0,148,0,0" TextWrapping="Wrap" Text="App Made By crazyne55!" VerticalAlignment="Top" HorizontalAlignment="Center" Width="250" IsEnabled="False"/>
+        <TextBox ToolTip="The 'key' for the large image" x:Name="INPUT_LargeImage" Height="30" Margin="0,183,227,0" TextWrapping="Wrap" Text="dr_logo" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" IsEnabled="False"/>
+        <TextBox ToolTip="The hover-over text for the large image (if set)" x:Name="INPUT_LargeText" Height="30" Margin="227,183,0,0" TextWrapping="Wrap" Text="DiscordRich Logo" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" IsEnabled="False"/>
+        <TextBox ToolTip="The 'key' for the small image" x:Name="INPUT_SmallImage" Height="30" Margin="0,218,227,0" TextWrapping="Wrap" Text="dr_logo" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" IsEnabled="False"/>
+        <TextBox ToolTip="The hover-over text for the small image (if set)" x:Name="INPUT_SmallText" Height="30" Margin="227,218,0,0" TextWrapping="Wrap" Text="smol logo :)" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" IsEnabled="False"/>
+        <TextBox ToolTip="The ID for your 'party' (there is no party, this is just for discord to be happy)" x:Name="INPUT_PartyID" Height="30" Margin="0,253,0,0" TextWrapping="Wrap" Text="LobbyID" VerticalAlignment="Top" HorizontalAlignment="Center" Width="250" IsEnabled="False"/>
+        <TextBox ToolTip="The current number of people that are in your 'party'" x:Name="INPUT_PartyCurrent" Height="30" Margin="0,288,227,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" IsEnabled="False"/>
+        <TextBox ToolTip="The maximum number of people that can be in your 'party'" x:Name="INPUT_PartyMax" Height="30" Margin="227,288,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" IsEnabled="False"/>
+        <Button ToolTip="Clicking this button will update your 'Rich Presense' with the provided info" x:Name="SUBMIT_DATA" Content="Update" Height="25" Margin="122,329,122,0" VerticalAlignment="Top" Width="200" Click="SUBMIT_DATA_Click" IsEnabled="False"/>
+        <TextBox ToolTip="Enter the Application ID you found on the Discord Developer Portal here, then press the 'Start' button" x:Name="INPUT_AppID"  HorizontalAlignment="Left" Height="30" Margin="97,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" Foreground="Black" Background="White"/>
+        <Button ToolTip="Clicking this button with refresh the DiscordDLL with the new appID" x:Name="SUBMIT_RUN" Content="Start" HorizontalAlignment="Left" Height="30" Margin="317,49,0,0" VerticalAlignment="Top" Width="30" Click="SUBMIT_RUN_Click"/>
+
     </Grid>
 </Window>
