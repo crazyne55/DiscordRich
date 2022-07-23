@@ -1,7 +1,7 @@
 # DiscordRich
 <pre>
 Made by crazyne55
-Last official update: July 20, 2022
+Last official update: July 23, 2022
 </pre>
 
 ## INSTRUCTIONS
