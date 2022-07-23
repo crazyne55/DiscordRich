@@ -73,17 +73,18 @@ namespace DiscordRich
 
         private void SUBMIT_RUN_Click(object sender, RoutedEventArgs e)
         {
-            if (Helper.GetDiscord() != null)
+            Discord.Discord discord = Helper.GetDiscord();
+            GC.KeepAlive(discord);
+            if (discord != null)
             {
                 Main.updateThread.Abort();
-                Helper.GetDiscord().Dispose();
+                discord.Dispose();
             }
 
 
             TextBox INPUT_AppID = (TextBox)this.INPUT_AppID;
             if ((INPUT_AppID.Text.Length == 18 & Int64.TryParse(INPUT_AppID.Text, out _))| INPUT_AppID.Text.Length == 0)
             {
-                Discord.Discord discord;
                 if (INPUT_AppID.Text.Length == 0)
                 {
                     discord = Helper.MakeDiscord(Int64.Parse("957715991138283571"), (UInt64)Discord.CreateFlags.Default);
@@ -115,6 +116,11 @@ namespace DiscordRich
                 {
                     ((TextBox)this.FindName("INPUT_LargeImage")).IsEnabled = true;
                     ((TextBox)this.FindName("INPUT_SmallImage")).IsEnabled = true;
+                }
+                else 
+                {
+                    ((TextBox)this.FindName("INPUT_LargeImage")).IsEnabled = false;
+                    ((TextBox)this.FindName("INPUT_SmallImage")).IsEnabled = false;
                 }
             }
             else
@@ -190,6 +196,7 @@ namespace DiscordRich
         public static Discord.Discord MakeDiscord(long ClientID, UInt64 DiscordFlag)
         {
             discord = new Discord.Discord(ClientID, DiscordFlag);
+            GC.KeepAlive(discord);
             return discord;
         }
         public static Discord.Discord GetDiscord()
