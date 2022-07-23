@@ -24,7 +24,7 @@ namespace DiscordRich
     {
         public MainWindow()
         {
-            Main.Init();
+            //Main.Init();
             
             InitializeComponent();
 
@@ -70,14 +70,78 @@ namespace DiscordRich
             
             Main.UpdateActivity(Helper.GetDiscord(), activity);
         }
+
+        private void SUBMIT_RUN_Click(object sender, RoutedEventArgs e)
+        {
+            if (Helper.GetDiscord() != null)
+            {
+                Main.updateThread.Abort();
+                Helper.GetDiscord().Dispose();
+            }
+
+
+            TextBox INPUT_AppID = (TextBox)this.INPUT_AppID;
+            if ((INPUT_AppID.Text.Length == 18 & Int64.TryParse(INPUT_AppID.Text, out _))| INPUT_AppID.Text.Length == 0)
+            {
+                Discord.Discord discord;
+                if (INPUT_AppID.Text.Length == 0)
+                {
+                    discord = Helper.MakeDiscord(Int64.Parse("957715991138283571"), (UInt64)Discord.CreateFlags.Default);
+                }
+                else
+                {
+                    discord = Helper.MakeDiscord(Int64.Parse(INPUT_AppID.Text), (UInt64)Discord.CreateFlags.Default);
+                }
+                if (discord != null) { Main.Init(); INPUT_AppID.Background = new SolidColorBrush(Color.FromRgb(160, 255, 160)); }
+                else INPUT_AppID.Background = new SolidColorBrush(Color.FromRgb(255, 160, 160));
+
+
+
+
+
+
+                ((TextBox)this.FindName("INPUT_Details")).IsEnabled = true;
+                ((TextBox)this.FindName("INPUT_State")).IsEnabled = true;
+                ((TextBox)this.FindName("INPUT_LargeText")).IsEnabled = true;
+                ((TextBox)this.FindName("INPUT_SmallText")).IsEnabled = true;
+                ((TextBox)this.FindName("INPUT_PartyID")).IsEnabled = true;
+                ((TextBox)this.FindName("INPUT_PartyCurrent")).IsEnabled = true;
+                ((TextBox)this.FindName("INPUT_PartyMax")).IsEnabled = true;
+                ((Button)this.FindName("SUBMIT_DATA")).IsEnabled = true;
+
+
+
+                if (!(INPUT_AppID.Text.Length == 0 | INPUT_AppID.Text == "957715991138283571"))
+                {
+                    ((TextBox)this.FindName("INPUT_LargeImage")).IsEnabled = true;
+                    ((TextBox)this.FindName("INPUT_SmallImage")).IsEnabled = true;
+                }
+            }
+            else
+            {
+                INPUT_AppID.Background = new SolidColorBrush(Color.FromRgb(255, 160, 160));
+
+                ((TextBox)this.FindName("INPUT_Details")).IsEnabled = false;
+                ((TextBox)this.FindName("INPUT_State")).IsEnabled = false;
+                ((TextBox)this.FindName("INPUT_LargeText")).IsEnabled = false;
+                ((TextBox)this.FindName("INPUT_SmallText")).IsEnabled = false;
+                ((TextBox)this.FindName("INPUT_PartyID")).IsEnabled = false;
+                ((TextBox)this.FindName("INPUT_PartyCurrent")).IsEnabled = false;
+                ((TextBox)this.FindName("INPUT_PartyMax")).IsEnabled = false;
+                ((TextBox)this.FindName("INPUT_LargeImage")).IsEnabled = false;
+                ((TextBox)this.FindName("INPUT_SmallImage")).IsEnabled = false;
+                ((Button)this.FindName("SUBMIT_DATA")).IsEnabled = false;
+            } 
+        }
     }
 
 
     public class Main
     {
+        public static Thread updateThread;
         public static void Init()
         {
-            Discord.Discord discord = Helper.MakeDiscord(Int64.Parse("957715991138283571"), (UInt64)Discord.CreateFlags.Default);
+            Discord.Discord discord = Helper.GetDiscord();
             Discord.Activity activity;
 
             activity = new Discord.Activity();
@@ -93,7 +157,7 @@ namespace DiscordRich
             activity.Instance = true;
             UpdateActivity(discord, activity);
 
-            Thread updateThread = new Thread(() => {
+            updateThread = new Thread(() => {
                 Discord.Discord _discord = Helper.GetDiscord();
                 while (true)
                 {
