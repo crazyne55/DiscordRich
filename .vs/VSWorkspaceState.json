@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DiscordRich",
+    "\\DiscordRich\\Properties"
   ],
-  "SelectedNode": "\\DiscordRich.sln",
   "PreviewInSolutionExplorer": false
 }
