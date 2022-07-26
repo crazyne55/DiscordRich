@@ -83,7 +83,7 @@ namespace DiscordRich
 
 
             TextBox INPUT_AppID = (TextBox)this.INPUT_AppID;
-            if ((INPUT_AppID.Text.Length == 18 & Int64.TryParse(INPUT_AppID.Text, out _))| INPUT_AppID.Text.Length == 0)
+            if (Int64.TryParse(INPUT_AppID.Text, out _)| INPUT_AppID.Text.Length == 0)
             {
                 if (INPUT_AppID.Text.Length == 0)
                 {
